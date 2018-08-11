@@ -1,9 +1,4 @@
 {
   "extends": "tslint:recommended",
-  "rules": {},
-  "linterOptions": {
-    "exclude": [
-      "**/project-c/**"
-    ]
-  }
+  "rules": {}
 }

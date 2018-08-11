@@ -23,6 +23,14 @@ const Linter = () => {
     summaryAndReturn();
   };
 
+  const lintWatch = (projects, flags) => {
+    const baseCmd = `node ./node_modules/nodemon/bin/nodemon ${args.join(' ')}`;
+    const fullCmd = `${baseCmd} --format stylish --force`;
+    const output = run(fullCmd);
+    parseOutput(output);
+    summaryAndReturn();
+  };
+
   const lintAll = (projects, args) => {
     projects.forEach(path => {
       const baseCmd = `node ./node_modules/tslint/bin/tslint ${args.join(' ')}`;
@@ -33,7 +41,7 @@ const Linter = () => {
     summaryAndReturn();
   };
 
-  const lintWatch = (projects, flags) => {
+  const lintWatchAll = (projects, flags) => {
   
   };
 
