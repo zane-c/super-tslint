@@ -1,10 +1,17 @@
 const colors = require('colors');
 const execSync = require('child_process').execSync;
+const spawn = require('child_process').spawn;
+const path = require('path');
 
 const Linter = () => {
   const linter = {};
   let totalErrors = 0;
   let totalWarnings = 0;
+
+  const dir = path.resolve(__dirname);
+  const tslintPath = `${dir}/../node_modules/tslint/bin/tslint`;
+  const nodemonPath = `${dir}/../node_modules/nodemon/bin/nodemon`;
+  const nicePath = `${dir}/../bin/tslint-nice`;
 
   const run = (cmd) => {
     try {
@@ -16,33 +23,29 @@ const Linter = () => {
   }
 
   const lint = (args) => {
-    const baseCmd = `node ./node_modules/tslint/bin/tslint ${args.join(' ')}`;
-    const fullCmd = `${baseCmd} --format stylish --force`;
-    const output = run(fullCmd);
+    const cmd = `node ${tslintPath} ${args.join(' ')} --format stylish --force`;
+    const output = run(cmd);
     parseOutput(output);
     summaryAndReturn();
   };
 
-  const lintWatch = (projects, flags) => {
-    const baseCmd = `node ./node_modules/nodemon/bin/nodemon ${args.join(' ')}`;
-    const fullCmd = `${baseCmd} --format stylish --force`;
-    const output = run(fullCmd);
-    parseOutput(output);
-    summaryAndReturn();
+  const lintWatch = (args) => {
+    const tslint = `node ${nicePath} ${args.join(' ')} || exit 0`;
+    const cmd = `${nodemonPath} --delay 3 -e ts -x "${tslint}"`;
+    const stream = spawn('node', cmd.split(' '));
+
+    stream.stdout.on('data', function (data) {
+      console.log(data.toString());
+    });
   };
 
   const lintAll = (projects, args) => {
     projects.forEach(path => {
-      const baseCmd = `node ./node_modules/tslint/bin/tslint ${args.join(' ')}`;
-      const fullCmd = `${baseCmd} --format stylish --force --project ${path}`;
-      const output = run(fullCmd);
+      const cmd = `node ${tslintPath} ${args.join(' ')} --format stylish --force --project ${path}`;
+      const output = run(cmd);
       parseOutput(output);
     });
     summaryAndReturn();
-  };
-
-  const lintWatchAll = (projects, flags) => {
-  
   };
 
   const parseOutput = (str) => {

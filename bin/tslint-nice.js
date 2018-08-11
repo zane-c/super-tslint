@@ -31,8 +31,8 @@ if (INSPIRE_FLAG) {
   inspire.logRandomQuote();
 
 } else if (ALL_FLAG && WATCH_FLAG) {
-  const paths = globby.sync([`${cwd}/**/tsconfig*`]);
-  linter.lintWatchAll(paths, args);
+  args.push('--all');
+  linter.lintWatch(args);
 
 } else if (ALL_FLAG) {
   const paths = globby.sync([`${cwd}/**/tsconfig*`]);
