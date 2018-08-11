@@ -11,7 +11,7 @@ const Linter = () => {
   const dir = path.resolve(__dirname);
   const tslintPath = `${dir}/../node_modules/tslint/bin/tslint`;
   const nodemonPath = `${dir}/../node_modules/nodemon/bin/nodemon`;
-  const nicePath = `${dir}/../bin/tslint-nice`;
+  const nicePath = `${dir}/../bin/super-tslint`;
 
   const run = (cmd) => {
     try {
