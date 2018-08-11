@@ -19,7 +19,8 @@
     "multiple",
     "tsconfig",
     "clean",
-    "simple"
+    "simple",
+    "watch"
   ],
   "author": "Zane Christenson",
   "license": "ISC",

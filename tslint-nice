@@ -4,24 +4,33 @@ const fs = require('fs');
 const path = require('path');
 const linter = require('./linter.js');
 
+let ALL_FLAG = false;
+let WATCH_FLAG = false;
+
 const cwd = process.cwd();
+const args = process.argv.slice(2);
 
-const flags = process.argv.slice(2);
-console.log(flags)
+if (args.indexOf('--all') !== -1) {
+  ALL_FLAG = true;
+  args.splice(args.indexOf('--all'), 1);
+}
 
-const FLAGS = {
-  all: false,
-  fix: process.argv.indexOf('--fix') !== -1,
-  watch: process.argv.indexOf('--watch') !== -1,
-};
+if (args.indexOf('--watch') !== -1) {
+  WATCH_FLAG = true;
+  args.splice(args.indexOf('--watch'), 1);
+}
 
-if (FLAGS.all) {
+if (ALL_FLAG) {
   const paths = globby.sync([`${cwd}/**/tsconfig.json`]);
-  linter.lint(paths, FLAGS);
-} else {
-  if (process.argv.length < 3) {
-    linter.error('please specify a path to a tsconfig');
+  if (WATCH_FLAG) {
+    linter.lintWatch(paths, args);
+  } else {
+    linter.lintAll(paths, args);
   }
-  const path = process.argv[process.argv.length - 1];
-  linter.lint([path], FLAGS);
+} else {
+  if (WATCH_FLAG) {
+    linter.lintWatch(paths, args);
+  } else {
+    linter.lint(args);
+  }
 }
