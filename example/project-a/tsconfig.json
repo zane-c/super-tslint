@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "outFile": "bundle.js",
+      "sourceMap": true
+  },
+  "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+  ]
+}

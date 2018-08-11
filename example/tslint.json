@@ -1,0 +1,14 @@
+{
+  "extends": "../tslint.json",
+  "rules": {
+    "member-access": false,
+    "no-console": {
+      "severity": "warning"
+    }
+  },
+  "linterOptions": {
+    "exclude": [
+      "**/project-c/**"
+    ]
+  }
+}
