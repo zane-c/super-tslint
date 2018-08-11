@@ -1,0 +1,63 @@
+const colors = require('colors');
+const execSync = require('child_process').execSync;
+const globby = require("globby");
+const fs = require('fs');
+const path = require('path');
+
+const ALL_FLAG = process.argv.indexOf('--all') !== -1;
+const FIX_FLAG = process.argv.indexOf('--fix') !== -1;
+
+function lint (projects) {
+  const totalErrors = 0;
+  const totalWarnings = 0;
+
+  projects.forEach(path => {
+    const cmd = `tslint --format stylish --force ${FIX_FLAG ? '--fix' : ''} --project ${path}`;
+    const output = execSync(cmd).toString('utf8');
+    console.log(`LINTING: ${path}...`.cyan);
+    parseOutput(output);
+  });
+
+  let errMsg = `TOTAL ERRORS ${totalErrors}`;
+  errMsg = totalErrors > 0 ? errMsg.red : errMsg;
+  console.log(errMsg);
+
+  let warnMsg = `TOTAL WARNINGS ${totalWarnings}`;
+  warnMsg = totalWarnings > 0 ? warnMsg.yellow : warnMsg;
+  console.log(warnMsg);
+
+  if (totalErrors > 0) {
+    process.exit(1);
+  } else {
+    process.exit(0);
+  }
+}
+
+function parseOutput(str) {
+  const lines = str.split('\n');
+  lines.forEach(line => {
+    if ((line.match(/ERROR: /g) || []).length) {
+      console.log(line.red);
+      totalErrors += 1;
+    } else if ((line.match(/WARNING: /g) || []).length) {
+      console.log(line.yellow);
+      totalWarnings += 1;
+    } else {
+      console.log(line);
+    }
+  });
+}
+
+if (ALL_FLAG) {
+  const file = fs.readFileSync(path.resolve(__dirname) + '../../../tslint.json');  
+  const tslint = JSON.parse(file); 
+  const globs = tslint.linterOptions.exclude.map(glob => {
+    return '!' + glob;
+  });
+  globs.unshift('**/tsconfig.json');
+  const paths = globby.sync(globs);
+  lint(paths);
+} else {
+  const path = process.argv[process.argv.length - 1];
+  lint([path]);
+}
