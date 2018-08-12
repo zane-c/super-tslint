@@ -9,8 +9,8 @@ const Linter = () => {
   let totalWarnings = 0;
 
   const dir = path.resolve(__dirname);
-  const tslintPath = `${dir}/../node_modules/tslint/bin/tslint`;
-  const nodemonPath = `${dir}/../node_modules/nodemon/bin/nodemon`;
+  const tslintPath = `${dir}/../..//tslint/bin/tslint`;
+  const nodemonPath = `${dir}/../../nodemon/bin/nodemon`;
   const nicePath = `${dir}/../bin/super-tslint`;
 
   const run = (cmd) => {

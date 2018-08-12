@@ -17,7 +17,7 @@
     "watch"
   ],
   "author": "Zane Christenson",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zane-c/super-tslint/issues"
   },
