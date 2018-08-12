@@ -1,6 +1,6 @@
 {
   "name": "super-tslint",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An extension of the tslint library that allows for watching files, adding better handling of multiple nested typescript projects and more human readable output.",
   "main": "bin/super-tslint.js",
   "bin": {
