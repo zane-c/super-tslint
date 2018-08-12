@@ -2,7 +2,10 @@
   "name": "super-tslint",
   "version": "1.0.1",
   "description": "An extension of the tslint library that allows for watching files, adding better handling of multiple nested typescript projects and more human readable output.",
-  "main": "bin/super-tslint",
+  "main": "bin/super-tslint.js",
+  "bin": {
+    "super-tslint": "./bin/super-tslint.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zane-c/super-tslint.git"
@@ -18,6 +21,7 @@
   ],
   "author": "Zane Christenson",
   "license": "MIT",
+  "preferGlobal": true,
   "bugs": {
     "url": "https://github.com/zane-c/super-tslint/issues"
   },

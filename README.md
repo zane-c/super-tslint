@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" width="120px" alt="" />
+  <img src="readme/logo.png" width="120px" alt="" />
 </p>
 
 # Super tslint

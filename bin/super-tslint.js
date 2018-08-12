@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const globby = require("globby");
 const linter = require('../src/linter');
 const inspire = require('../src/inspire');
