@@ -6,34 +6,40 @@
 An extension of the tslint library adding the ability to watch files, better handle multiple nested tsconfigs, and more human readable output.
 
 # Installation
-install and save the npm package 
+install the npm package 
 ```
 > npm i -g super-tslint
 ```
+or if you prefer to install it local to your project
+```
+> npm i --save-dev super-tslint
+// and to use it reference it locally
+> node ./node_modules/super-tslint/bin/super-tslint ...
+```
 
 # Useage
-### lint a project
+### Lint a project
 ```
 > super-tslint --project example/project-a/tsconfig.json
 ```
 
-### lint and auto fix a project
+### Lint and auto fix a project
 ```
 > super-tslint --fix --project example/project-a/tsconfig.json
 ```
 
-### lint all nested tsconfigs
+### Lint all nested tsconfigs
 this will lint all ts projects nested from the current directory
 ```
 > super-tslint --all
 ```
 
-### lint and watch for changes
+### Lint and watch for changes
 ```
 > super-tslint --watch --project example/project-a/tsconfig.json
 ```
 
-### lint and watch all 
+### Lint and watch all 
 ```
 > super-tslint --watch --all
 ```
@@ -42,3 +48,8 @@ this will lint all ts projects nested from the current directory
 ```
 > super-tslint --quote
 ```
+
+### Example output
+<p align="center">
+  <img src="./readme/output.png" width="600px" alt="" />
+</p>
