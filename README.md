@@ -17,7 +17,7 @@ or if you prefer to install it local to your project
 > node ./node_modules/super-tslint/bin/super-tslint ...
 ```
 
-# Useage
+# Usage
 ### Lint a project
 ```
 > super-tslint --project example/project-a/tsconfig.json
