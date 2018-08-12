@@ -51,5 +51,5 @@ this will lint all ts projects nested from the current directory
 
 ### Example output
 <p align="center">
-  <img src="./readme/output.png" width="600px" alt="" />
+  <img src="./readme/output.png" alt="" />
 </p>
