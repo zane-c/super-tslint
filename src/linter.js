@@ -2,6 +2,7 @@ const colors = require('colors');
 const execSync = require('child_process').execSync;
 const spawn = require('child_process').spawn;
 const path = require('path');
+const fs = require('fs');
 
 const Linter = () => {
   const linter = {};
@@ -9,9 +10,18 @@ const Linter = () => {
   let totalWarnings = 0;
 
   const dir = path.resolve(__dirname);
-  const tslintPath = `${dir}/../..//tslint/bin/tslint`;
-  const nodemonPath = `${dir}/../../nodemon/bin/nodemon`;
-  const nicePath = `${dir}/../bin/super-tslint`;
+  const superPath = `${dir}/../bin/super-tslint`;
+  let tslintPath;
+  let nodemonPath;
+
+  // check for global or local installation
+  if (fs.existsSync(`${dir}/../node_modules/tslint/bin/tslint`)) {
+    tslintPath = `${dir}/../node_modules/tslint/bin/tslint`;
+    nodemonPath = `${dir}/../node_modules/nodemon/bin/nodemon`;
+  } else {
+    tslintPath = `${dir}/../../tslint/bin/tslint`;
+    nodemonPath = `${dir}/../../nodemon/bin/nodemon`;
+  }
 
   const run = (cmd) => {
     try {
@@ -30,7 +40,7 @@ const Linter = () => {
   };
 
   const lintWatch = (args) => {
-    const tslint = `node ${nicePath} ${args.join(' ')} || exit 0`;
+    const tslint = `node ${superPath} ${args.join(' ')} || exit 0`;
     const cmd = `${nodemonPath} --delay 3 -e ts -x "${tslint}"`;
     const stream = spawn('node', cmd.split(' '));
 

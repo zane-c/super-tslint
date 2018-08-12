@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="readme/logo.png" width="120px" alt="" />
+  <img src="./readme/logo.png" width="120px" alt="" />
 </p>
 
 # Super tslint
@@ -8,7 +8,7 @@ An extension of the tslint library adding the ability to watch files, better han
 # Installation
 install and save the npm package 
 ```
-> npm i --save-dev super-tslint
+> npm i -g super-tslint
 ```
 
 # Useage
