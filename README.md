@@ -18,6 +18,18 @@ or if you prefer to install it local to your project
 ```
 
 # Usage
+
+### Flags
+```
+        -p, --project [path]    path to tsconfig, lints entire project.
+        -q, --quote             a bit of inspiration.
+        -h, --help              shows this dialog.
+
+        --all                   lints all nested tsconfig.* projects.
+        --fix                   auto fixes compatible errors.
+        --watch                 watches files for on save and re-runs linter.
+```
+
 ### Lint a project
 ```
 > super-tslint --project example/project-a/tsconfig.json
@@ -44,12 +56,12 @@ this will lint all ts projects nested from the current directory
 > super-tslint --watch --all
 ```
 
-### Inspire yourself to write better code
-```
-> super-tslint --quote
-```
-
 ### Example output
 <p align="center">
   <img src="./readme/output.png" alt="" />
 </p>
+
+### Inspire yourself to write better code
+```
+> super-tslint --quote
+```

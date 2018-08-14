@@ -8,6 +8,8 @@
   },
   "linterOptions": {
     "exclude": [
+      "**/project-a/**",
+      "**/project-b/**",
       "**/project-c/**"
     ]
   }

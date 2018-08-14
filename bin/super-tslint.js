@@ -12,6 +12,11 @@ const args = process.argv.slice(2);
 let ALL_FLAG = false;
 let WATCH_FLAG = false;
 let INSPIRE_FLAG = false;
+let HELP_FLAG = false;
+
+if (args.indexOf('-h') !== -1 || args.indexOf('--help') !== -1) {
+  HELP_FLAG = true;
+}
 
 if (args.indexOf('--all') !== -1) {
   ALL_FLAG = true;
@@ -23,13 +28,16 @@ if (args.indexOf('--watch') !== -1) {
   args.splice(args.indexOf('--watch'), 1);
 }
 
-if (args.indexOf('--quote') !== -1) {
+if (args.indexOf('--quote') !== -1 || args.indexOf('-q') !== -1) {
   INSPIRE_FLAG = true;
 }
 
 /* Run Linter */
 
-if (INSPIRE_FLAG) {
+if (HELP_FLAG) {
+  linter.help();
+
+} else if (INSPIRE_FLAG) {
   inspire.logRandomQuote();
 
 } else if (ALL_FLAG && WATCH_FLAG) {
