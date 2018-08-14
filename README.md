@@ -10,11 +10,10 @@ install the npm package
 ```
 > npm i -g super-tslint
 ```
-or if you prefer to install it local to your project
+or if you prefer to install it locally
 ```
 > npm i --save-dev super-tslint
-// and to use it reference it locally
-> node ./node_modules/super-tslint/bin/super-tslint ...
+> node ./node_modules/super-tslint/bin/super-tslint  ...
 ```
 
 # Usage
@@ -44,12 +43,14 @@ this will lint all ts projects nested from the current directory
 > super-tslint --watch --all
 ```
 
+### Example output
+<p align="center">
+  <img src="./readme/output.png" alt="" />
+</p>
+
 ### Inspire yourself to write better code
 ```
 > super-tslint --quote
 ```
 
-### Example output
-<p align="center">
-  <img src="./readme/output.png" alt="" />
-</p>
+
