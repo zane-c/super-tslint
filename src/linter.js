@@ -60,7 +60,7 @@ const Linter = () => {
   const parseOutput = (str) => {
     const lines = str.split('\n');
     lines.forEach(line => {
-      const chunks = line.split('  ');
+      const chunks = line.split('  ').filter(g => g.trim().length);
       if ((line.match(/ERROR: /g) || []).length) {
         console.log(`${chunks[0].red}\t\t${chunks[1].grey}\t\t${chunks[2].cyan}`);
         totalErrors += 1;
