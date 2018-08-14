@@ -60,18 +60,13 @@ this will lint all ts projects nested from the current directory
 > super-tslint --watch --all
 ```
 
-### Example output
-<p align="center">
-  <img src="./readme/output.png" alt="" />
-</p>
-
 ### Inspire yourself to write better code
 ```bash
 > super-tslint --quote
 ```
 
 # Setting up multiple tsconfigs
-For the following example, lets say we the below project structure
+For the following example, lets say we have the below project structure
 ```bash
 |____projects
 |   |__proj-a
@@ -129,11 +124,11 @@ An example `tsconfig.json`
 }
 ```
 
-To lint all nested projects run
+And then to lint all nested projects run
 ```bash
 > super-tslint --all
 ```
-could produce the following output
+which could produce the following example output
 ```c
 C:/root/projects/proj-a/file-a.ts:10:16
 ERROR: 10:16            semicolon                Missing semicolon
@@ -147,4 +142,9 @@ ERROR: 10:16            semicolon                Missing semicolon
 TOTAL ERRORS:     3
 TOTAL WARNINGS:   1
 ```
+
+### Example output coloring
+<p align="center">
+  <img src="./readme/output.png" alt="" />
+</p>
 
