@@ -129,7 +129,7 @@ And then to lint all nested projects run
 > super-tslint --all
 ```
 which could produce the following example output
-```c
+```
 C:/root/projects/proj-a/file-a.ts:10:16
 ERROR: 10:16            semicolon                Missing semicolon
 WARNING: 14:5            no-console             Calls to 'console.log' are not allowed.
@@ -142,6 +142,9 @@ ERROR: 10:16            semicolon                Missing semicolon
 TOTAL ERRORS:     3
 TOTAL WARNINGS:   1
 ```
+
+### Exit codes
+If any error occurs during linting, process will return exit status 1 (this does not include warnings).
 
 ### Example output coloring
 <p align="center">
