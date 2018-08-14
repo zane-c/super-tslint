@@ -22,6 +22,11 @@ or if you prefer to install it locally
 > super-tslint --project example/project-a/tsconfig.json
 ```
 
+### Lint a single file
+```
+> super-tslint path/to/file.ts
+```
+
 ### Lint and auto fix a project
 ```
 > super-tslint --fix --project example/project-a/tsconfig.json
